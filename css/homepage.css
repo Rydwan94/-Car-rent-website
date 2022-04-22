@@ -1,0 +1,42 @@
+
+
+.enterBtn {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.enterBtn button{
+    width: auto;
+    height: auto;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.411);
+    color: white;
+    transition: 0.8s ease-in-out;
+    font-family: 'Libre Baskerville', serif;
+    cursor: pointer;
+}
+
+.enterBtn button:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.356);
+    text-shadow: 3px 7px 3px black;
+    border-radius: 30px;
+    
+}
+
+.backgroundVideo {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7);
+}
+
+.homeScreenVideo {
+    height: 100vh;
+}

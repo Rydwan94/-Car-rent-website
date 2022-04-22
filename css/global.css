@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Baskerville', serif;
+}
+
+
+input {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.151);
+    color: black;
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    background-color: white;
+    border: 1px solid black;
+}
+
+
+
+button:hover {
+    cursor: pointer;
+}
+
