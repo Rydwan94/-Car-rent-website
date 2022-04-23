@@ -296,17 +296,17 @@ body {
   box-shadow: 2px 2px 20px black;
   
   padding-bottom: 20px;
-  background-color: black;
+  background-color: white;
 }
 
 .acessoriesContainer p {
   text-align: center;
-  color: white;
+  color: black
   font-size: 20px;
 }
 
 .acessoriesContainer span {
-  color: white;
+  color: black;
 }
 
 .errorBox {

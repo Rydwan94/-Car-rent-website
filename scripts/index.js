@@ -1,14 +1,6 @@
-function myFunction() {
-  let x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
 
-let container = document.getElementById("container");
-
+const nav = document.getElementById("nav")
+const container = document.getElementById("container");
 const searchElements = document.getElementById("searchElements");
 const searchInput = document.getElementById("carsInput");
 const carVolvo = document.getElementById("carVolvo");
@@ -53,6 +45,17 @@ const $removeSensors = document.getElementById("removeSensors");
 const $formAcceptButton = document.getElementById("formAcceptButton");
 const $returnFromBuyButton = document.getElementById("returnFromBuyButton");
 const $formLeasing = document.getElementById("formLeasing");
+
+
+nav.addEventListener('click', () => {
+  let x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+})
+  
 
 $hide.addEventListener("click", () => {
   searchElements.classList.toggle("hidden");
