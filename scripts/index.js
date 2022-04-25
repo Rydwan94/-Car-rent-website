@@ -1,5 +1,4 @@
-
-const nav = document.getElementById("nav")
+const nav = document.getElementById("nav");
 const container = document.getElementById("container");
 const searchElements = document.getElementById("searchElements");
 const searchInput = document.getElementById("carsInput");
@@ -45,17 +44,16 @@ const $removeSensors = document.getElementById("removeSensors");
 const $formAcceptButton = document.getElementById("formAcceptButton");
 const $returnFromBuyButton = document.getElementById("returnFromBuyButton");
 const $formLeasing = document.getElementById("formLeasing");
+const $formCash = document.getElementById("formCash")
 
-
-nav.addEventListener('click', () => {
+nav.addEventListener("click", () => {
   let x = document.getElementById("myLinks");
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
     x.style.display = "block";
   }
-})
-  
+});
 
 $hide.addEventListener("click", () => {
   searchElements.classList.toggle("hidden");
@@ -141,8 +139,6 @@ function pokazCzas() {
   return output;
 }
 
-// document.getElementById("current_date").innerHTML = `Szacowany czas dostawy auta : `  + pokazCzas()
-
 $formButtonVolvo.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
@@ -176,6 +172,8 @@ $formButtonAudi.addEventListener("click", () => {
 });
 
 // form
+
+$formLeasing.checked = true
 
 $formButtonVolvo.addEventListener("click", () => {
   let volvoPrice = 385900;
@@ -247,7 +245,10 @@ function acessoriesAdding() {
 acessoriesAdding();
 
 $formAcceptButton.addEventListener("click", () => {
-  if (formName.value[0] !== formName.value[0].toUpperCase()) {
+  if (formName.value =="" || formLastName ==""){
+    errorContainer.innerText = "Podaj imię i nazwisko"
+  }
+  else if (formName.value[0] !== formName.value[0].toUpperCase()) {
     errorContainer.style.display = "block";
     errorContainer.innerText =
       "Imię i nazwisko powinny zaczynać się z dużej litery";
@@ -275,11 +276,36 @@ $returnFromBuyButton.addEventListener("click", () => {
   container.style.display = "block";
   buyedCar.style.display = "none";
   buyedCarImage.innerHTML = "";
-  formName.value = ''
-  formLastName.value = ''
-  tiresPlaceHolder.innerText = ''
-  skinPlaceHolder.innerText = ''
-  sensorPlaceHolder.innerText = ''
+  formName.value = "";
+  formLastName.value = "";
+  tiresPlaceHolder.innerText = "";
+  skinPlaceHolder.innerText = "";
+  sensorPlaceHolder.innerText = "";
 });
 
+function saveNameValue() {
+  if (sessionStorage.getItem("autosave")) {
+    // Restore a content of the input
+    formName.value = sessionStorage.getItem("autosave");
+  }
 
+  formName.addEventListener("change", function () {
+    // save value into sessionStorage object
+    sessionStorage.setItem("autosave", formName.value);
+  });
+}
+
+function saveLastNameValue() {
+  if (sessionStorage.getItem("autosave")) {
+    // Restore a content of the input
+    formLastName.value = sessionStorage.getItem("autosave");
+  }
+
+  formLastName.addEventListener("change", function () {
+    // save value into sessionStorage object
+    sessionStorage.setItem("autosave", formLastName.value);
+  });
+}
+
+saveNameValue();
+saveLastNameValue();
