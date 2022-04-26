@@ -16,8 +16,8 @@ Projekt strony wynajmu samochodów.
 * Google fonts
 	
 ## Wersja 1.0 zawiera:
--Wykorzystany font libre 
--Wykorzystanie HTML, CSS, Javascript
+* Wykorzystany font libre 
+* Wykorzystanie HTML, CSS, Javascript
 
 ## Setup
 To run this project, install it locally using npm:
