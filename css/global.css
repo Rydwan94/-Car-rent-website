@@ -23,28 +23,4 @@ button:hover {
   cursor: pointer;
 }
 
-@media all and (min-width: 300px) and (max-width: 700px), 
-    all and (min-width: 700px) and (max-width: 1200px) {
 
-  #container {
-    min-width: 100vh;
-  }
-
-  .enterBtn button {
-    font-size: 40px;
-  }
-
-  .carsCardsContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-
-  .carFooter {
-    width: 100vh;
-  }
-
-  .carFooter ul {
-    display: flex;
-  }
-}
