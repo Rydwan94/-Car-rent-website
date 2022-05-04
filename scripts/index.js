@@ -29,25 +29,25 @@ renaultImage.src = "src/renault.jpg";
 opelImage.src = "src/opel.webp";
 audiImage.src = "src/audi.webp";
 
-const $hide = document.getElementById("hide");
-const $formButtonVolvo = document.getElementById("formButtonVolvo");
-const $formButtonRenault = document.getElementById("formButtonRenault");
-const $formButtonOpel = document.getElementById("formButtonOpel");
-const $formButtonAudi = document.getElementById("formButtonAudi");
-const $formBackButton = document.getElementById("formBackButton");
-const $tiresButton = document.getElementById("tiresButton");
-const $seatsButton = document.getElementById("seatsButton");
-const $sensorButton = document.getElementById("sensorButton");
-const $removeTires = document.getElementById("removeTires");
-const $removeSeats = document.getElementById("removeSeats");
-const $removeSensors = document.getElementById("removeSensors");
-const $formAcceptButton = document.getElementById("formAcceptButton");
-const $returnFromBuyButton = document.getElementById("returnFromBuyButton");
-const $formLeasing = document.getElementById("formLeasing");
-const $formCash = document.getElementById("formCash")
+const hide = document.getElementById("hide");
+const formButtonVolvo = document.getElementById("formButtonVolvo");
+const formButtonRenault = document.getElementById("formButtonRenault");
+const formButtonOpel = document.getElementById("formButtonOpel");
+const formButtonAudi = document.getElementById("formButtonAudi");
+const formBackButton = document.getElementById("formBackButton");
+const tiresButton = document.getElementById("tiresButton");
+const seatsButton = document.getElementById("seatsButton");
+const sensorButton = document.getElementById("sensorButton");
+const removeTires = document.getElementById("removeTires");
+const removeSeats = document.getElementById("removeSeats");
+const removeSensors = document.getElementById("removeSensors");
+const formAcceptButton = document.getElementById("formAcceptButton");
+const returnFromBuyButton = document.getElementById("returnFromBuyButton");
+const formLeasing = document.getElementById("formLeasing");
+const formCash = document.getElementById("formCash");
 
 nav.addEventListener("click", () => {
-  let links = document.getElementById("myLinks");
+  const links = document.getElementById("myLinks");
   if (links.style.display === "block") {
     links.style.display = "none";
   } else {
@@ -55,7 +55,7 @@ nav.addEventListener("click", () => {
   }
 });
 
-$hide.addEventListener("click", () => {
+hide.addEventListener("click", () => {
   searchElements.classList.toggle("hidden");
   carVolvo.style.display = "none";
   carRenault.style.display = "none";
@@ -139,116 +139,105 @@ function showTime() {
   return output;
 }
 
-$formButtonVolvo.addEventListener("click", () => {
+const finalBought = () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
+  boughtCarInfo.innerHTML =
+    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
+};
+
+formButtonVolvo.addEventListener("click", () => {
   boughtCarImage.appendChild(volvoImage);
-  boughtCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
+  finalBought()
 });
 
-$formButtonRenault.addEventListener("click", () => {
-  formContainer.classList.toggle("hidden");
-  container.style.display = "none";
+formButtonRenault.addEventListener("click", () => {
   boughtCarImage.appendChild(renaultImage);
-  boughtCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
+  finalBought()
 });
 
-$formButtonOpel.addEventListener("click", () => {
-  formContainer.classList.toggle("hidden");
-  container.style.display = "none";
+formButtonOpel.addEventListener("click", () => {
   boughtCarImage.appendChild(opelImage);
-  boughtCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
+  finalBought()
 });
 
-$formButtonAudi.addEventListener("click", () => {
-  formContainer.classList.toggle("hidden");
-  container.style.display = "none";
+formButtonAudi.addEventListener("click", () => {
   boughtCarImage.appendChild(audiImage);
-  boughtCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` +showTime();
+  finalBought()
 });
 
 // form
 
-$formLeasing.checked = true
+formLeasing.checked = true;
 
-$formButtonVolvo.addEventListener("click", () => {
-  let volvoPrice = 385900;
-  costOfCar.value = volvoPrice;
-});
-$formButtonRenault.addEventListener("click", () => {
-  let reantulPrice = 120000;
-  costOfCar.value = reantulPrice;
-});
-$formButtonOpel.addEventListener("click", () => {
-  let opelPrice = 140000;
-  costOfCar.value = opelPrice;
-});
-$formButtonAudi.addEventListener("click", () => {
-  let audiPrice = 200000;
-  costOfCar.value = audiPrice;
-});
+const displayPrice = (price) => {
+  costOfCar.value = price;
+};
 
-$formBackButton.addEventListener("click", () => {
+formButtonVolvo.addEventListener("click", () => {
+  displayPrice(385900);
+});
+formButtonRenault.addEventListener("click", () => {
+  displayPrice(120000);
+});
+formButtonOpel.addEventListener("click", () => {
+  displayPrice(140000);
+});
+formButtonAudi.addEventListener("click", () => {
+  displayPrice(200000);
+});
+formBackButton.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "block";
 });
 
-function acessoriesAdding() {
-  $tiresButton.addEventListener("click", () => {
-    if (tiresPlaceHolder.innerHTML === "") {
-      costOfCar.value = Number(costOfCar.value) + 5000;
-    }
-    tiresPlaceHolder.innerHTML = "<li>Opony na każdy sezon</li>";
-  });
-
-  $seatsButton.addEventListener("click", () => {
-    if (skinPlaceHolder.innerHTML === "") {
-      costOfCar.value = Number(costOfCar.value) + 10000;
-    }
-    skinPlaceHolder.innerHTML = "<li>Skórzane fotele</li>";
-  });
-
-  $sensorButton.addEventListener("click", () => {
-    if (sensorPlaceHolder.innerHTML === "") {
-      costOfCar.value = Number(costOfCar.value) + 4000;
-    }
-    sensorPlaceHolder.innerHTML = "<li>Czujniki parkowania</li>";
-  });
-
-  $removeTires.addEventListener("click", () => {
-    if (tiresPlaceHolder.innerHTML === "<li>Opony na każdy sezon</li>") {
-      costOfCar.value = Number(costOfCar.value) - 5000;
-    }
-    tiresPlaceHolder.innerHTML = "";
-  });
-
-  $removeSeats.addEventListener("click", () => {
-    if (skinPlaceHolder.innerHTML === "<li>Skórzane fotele</li>") {
-      costOfCar.value = Number(costOfCar.value) - 10000;
-    }
-    skinPlaceHolder.innerHTML = "";
-  });
-
-  $removeSensors.addEventListener("click", () => {
-    if (sensorPlaceHolder.innerHTML === "<li>Czujniki parkowania</li>") {
-      costOfCar.value = Number(costOfCar.value) - 4000;
-    }
-
-    sensorPlaceHolder.innerHTML = "";
-  });
-}
-
-acessoriesAdding();
-
-$formAcceptButton.addEventListener("click", () => {
-  if (formName.value =="" || formLastName ==""){
-    errorContainer.innerText = "Podaj imię i nazwisko"
+tiresButton.addEventListener("click", () => {
+  if (tiresPlaceHolder.innerHTML === "") {
+    costOfCar.value = Number(costOfCar.value) + 5000;
   }
-  else if (formName.value[0] !== formName.value[0].toUpperCase()) {
+  tiresPlaceHolder.innerHTML = "<li>Opony na każdy sezon</li>";
+});
+
+seatsButton.addEventListener("click", () => {
+  if (skinPlaceHolder.innerHTML === "") {
+    costOfCar.value = Number(costOfCar.value) + 10000;
+  }
+  skinPlaceHolder.innerHTML = "<li>Skórzane fotele</li>";
+});
+
+sensorButton.addEventListener("click", () => {
+  if (sensorPlaceHolder.innerHTML === "") {
+    costOfCar.value = Number(costOfCar.value) + 4000;
+  }
+  sensorPlaceHolder.innerHTML = "<li>Czujniki parkowania</li>";
+});
+
+removeTires.addEventListener("click", () => {
+  if (tiresPlaceHolder.innerHTML === "<li>Opony na każdy sezon</li>") {
+    costOfCar.value = Number(costOfCar.value) - 5000;
+  }
+  tiresPlaceHolder.innerHTML = "";
+});
+
+removeSeats.addEventListener("click", () => {
+  if (skinPlaceHolder.innerHTML === "<li>Skórzane fotele</li>") {
+    costOfCar.value = Number(costOfCar.value) - 10000;
+  }
+  skinPlaceHolder.innerHTML = "";
+});
+
+removeSensors.addEventListener("click", () => {
+  if (sensorPlaceHolder.innerHTML === "<li>Czujniki parkowania</li>") {
+    costOfCar.value = Number(costOfCar.value) - 4000;
+  }
+
+  sensorPlaceHolder.innerHTML = "";
+});
+
+formAcceptButton.addEventListener("click", () => {
+  if (formName.value == "" || formLastName == "") {
+    errorContainer.innerText = "Podaj imię i nazwisko";
+  } else if (formName.value[0] !== formName.value[0].toUpperCase()) {
     errorContainer.style.display = "block";
     errorContainer.innerText =
       "Imię i nazwisko powinny zaczynać się z dużej litery";
@@ -267,8 +256,7 @@ $formAcceptButton.addEventListener("click", () => {
   }
 });
 
-
-$returnFromBuyButton.addEventListener("click", () => {
+returnFromBuyButton.addEventListener("click", () => {
   foo.style.display = "block";
   container.style.display = "block";
   boughtCar.style.display = "none";
@@ -282,24 +270,20 @@ $returnFromBuyButton.addEventListener("click", () => {
 
 function saveNameValue() {
   if (sessionStorage.getItem("autosave")) {
-    // Restore a content of the input
     formName.value = sessionStorage.getItem("autosave");
   }
 
   formName.addEventListener("change", function () {
-    // save value into sessionStorage object
     sessionStorage.setItem("autosave", formName.value);
   });
 }
 
 function saveLastNameValue() {
   if (sessionStorage.getItem("autosave")) {
-    // Restore a content of the input
     formLastName.value = sessionStorage.getItem("autosave");
   }
 
   formLastName.addEventListener("change", function () {
-    // save value into sessionStorage object
     sessionStorage.setItem("autosave", formLastName.value);
   });
 }
