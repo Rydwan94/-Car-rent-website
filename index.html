@@ -8,8 +8,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="/css/global.css" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <title>CarRentWebsite</title>
   </head>
   <body>
@@ -21,9 +21,7 @@
         <div id="myLinks">
           <a href="homepage.html">Home Page</a>
         </div>
-        <a href="javascript:void(0);" class="icon" id="nav">
-          <i class="fa fa-bars"></i>
-        </a>
+        <button id="nav"><i class="fa fa-bars"></i></button>
       </nav>
     </header>
     
@@ -48,7 +46,7 @@
 
     <div id="carsContainer" class="carsCardsContainer">
       <div id="carVolvo" class="carsCards hidden">
-        <img src="src/volvo.webp" alt="Denim Jeans" style="width:100%">
+        <img src="./src/volvo.webp" alt="Volvo" style="width:100%">
         <h1>Volvo XC90</h1>
         <p class="price">385 900 zł</p>
         <p>
@@ -60,7 +58,7 @@
       </div>
 
       <div id="carRenault" class="carsCards hidden">
-        <img src="src/renault.jpg" alt="Denim Jeans">
+        <img src="./src/renault.jpg" alt="Renault">
         <h1>Renault Kadjar</h1>
         <p class="price">120 000 zł</p>
         <p>
@@ -72,7 +70,7 @@
       </div>
 
       <div id="carOpel" class="carsCards hidden">
-        <img src="src/opel.webp" alt="Denim Jeans">
+        <img src="./src/opel.webp" alt="Opel">
         <h1>Opel Astra</h1>
         <p class="price">140 000 zł</p>
         <p>
@@ -84,7 +82,7 @@
       </div>
 
       <div id="carAudi" class="carsCards hidden">
-        <img src="src/audi.webp" alt="Denim Jeans">
+        <img src="./src/audi.webp" alt="Audi">
         <h1>Audi A1</h1>
         <p class="price">200 000 zł</p>
         <p>
@@ -200,11 +198,11 @@
 
   </div>
 
-  <div id="buyedCarContainer" class="buyWindow">
+  <div id="boughtCarContainer" class="buyWindow">
     <div class="buyedCarWindow">
-      <div id="buyedCarImage" >
+      <div id="boughtCarImage" >
       </div>
-      <div class="buyCarInfo" id="buyedCarInfo">
+      <div class="buyCarInfo" id="boughtCarInfo">
       </div>
       <div>
         <button id="returnFromBuyButton">OK</button>

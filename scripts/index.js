@@ -14,9 +14,9 @@ const sensorPlaceHolder = document.getElementById("sensor");
 const errorContainer = document.getElementById("errorContainer");
 const formName = document.getElementById("formName");
 const formLastName = document.getElementById("formLastName");
-const buyedCar = document.getElementById("buyedCarContainer");
-const buyedCarImage = document.getElementById("buyedCarImage");
-const buyedCarInfo = document.getElementById("buyedCarInfo");
+const boughtCar = document.getElementById("boughtCarContainer");
+const boughtCarImage = document.getElementById("boughtCarImage");
+const boughtCarInfo = document.getElementById("boughtCarInfo");
 
 const volvoImage = document.createElement("img");
 const renaultImage = document.createElement("img");
@@ -47,11 +47,11 @@ const $formLeasing = document.getElementById("formLeasing");
 const $formCash = document.getElementById("formCash")
 
 nav.addEventListener("click", () => {
-  let x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
+  let links = document.getElementById("myLinks");
+  if (links.style.display === "block") {
+    links.style.display = "none";
   } else {
-    x.style.display = "block";
+    links.style.display = "block";
   }
 });
 
@@ -92,7 +92,7 @@ searchInput.addEventListener("change", () => {
   }
 });
 
-function pokazCzas() {
+function showTime() {
   let monthsArr = [
     "stycznia",
     "lutego",
@@ -142,33 +142,33 @@ function pokazCzas() {
 $formButtonVolvo.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
-  buyedCarImage.appendChild(volvoImage);
-  buyedCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + pokazCzas();
+  boughtCarImage.appendChild(volvoImage);
+  boughtCarInfo.innerHTML =
+    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
 });
 
 $formButtonRenault.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
-  buyedCarImage.appendChild(renaultImage);
-  buyedCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + pokazCzas();
+  boughtCarImage.appendChild(renaultImage);
+  boughtCarInfo.innerHTML =
+    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
 });
 
 $formButtonOpel.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
-  buyedCarImage.appendChild(opelImage);
-  buyedCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + pokazCzas();
+  boughtCarImage.appendChild(opelImage);
+  boughtCarInfo.innerHTML =
+    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + showTime();
 });
 
 $formButtonAudi.addEventListener("click", () => {
   formContainer.classList.toggle("hidden");
   container.style.display = "none";
-  buyedCarImage.appendChild(audiImage);
-  buyedCarInfo.innerHTML =
-    `Gratulujemy zakupu! Szacowany czas dostawy </br>` + pokazCzas();
+  boughtCarImage.appendChild(audiImage);
+  boughtCarInfo.innerHTML =
+    `Gratulujemy zakupu! Szacowany czas dostawy </br>` +showTime();
 });
 
 // form
@@ -263,19 +263,16 @@ $formAcceptButton.addEventListener("click", () => {
     errorContainer.style.display = "none";
     foo.style.display = "none";
     formContainer.classList.toggle("hidden");
-    buyedCar.style.display = "block";
+    boughtCar.style.display = "block";
   }
 });
 
-// $formLeasing.addEventListener('chec', () => {
-//   errorContainer.innerText = 'asfasf'
-// })
 
 $returnFromBuyButton.addEventListener("click", () => {
   foo.style.display = "block";
   container.style.display = "block";
-  buyedCar.style.display = "none";
-  buyedCarImage.innerHTML = "";
+  boughtCar.style.display = "none";
+  boughtCarImage.innerHTML = "";
   formName.value = "";
   formLastName.value = "";
   tiresPlaceHolder.innerText = "";
