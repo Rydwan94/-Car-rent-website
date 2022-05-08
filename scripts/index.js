@@ -192,6 +192,7 @@ formBackButton.addEventListener("click", () => {
 });
 
 tiresButton.addEventListener("click", () => {
+  
   if (tiresPlaceHolder.innerHTML === "") {
     costOfCar.value = Number(costOfCar.value) + 5000;
   }
@@ -213,21 +214,21 @@ sensorButton.addEventListener("click", () => {
 });
 
 removeTires.addEventListener("click", () => {
-  if (tiresPlaceHolder.innerHTML === "<li>Opony na każdy sezon</li>") {
+  if (tiresPlaceHolder.innerHTML.length >= 1) {
     costOfCar.value = Number(costOfCar.value) - 5000;
   }
   tiresPlaceHolder.innerHTML = "";
 });
 
 removeSeats.addEventListener("click", () => {
-  if (skinPlaceHolder.innerHTML === "<li>Skórzane fotele</li>") {
+  if (skinPlaceHolder.innerHTML.length >= 1) {
     costOfCar.value = Number(costOfCar.value) - 10000;
   }
   skinPlaceHolder.innerHTML = "";
 });
 
 removeSensors.addEventListener("click", () => {
-  if (sensorPlaceHolder.innerHTML === "<li>Czujniki parkowania</li>") {
+  if (sensorPlaceHolder.innerHTML.length >= 1) {
     costOfCar.value = Number(costOfCar.value) - 4000;
   }
 

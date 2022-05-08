@@ -357,13 +357,13 @@ body {
   animation-iteration-count: infinite;
 }
 
-.buyedCarWindow img {
+.boughtCarWindow img {
   width: 700px;
   border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
 }
 
-.buyedCarWindow button {
+.boughtCarWindow button {
   margin-top: 10px;
   width: 100%;
   border: none;
@@ -372,7 +372,7 @@ body {
   color: white;
 }
 
-.buyedCarWindow button:hover{
+.boughtCarWindow button:hover{
   color: black;
   background-color: white;
 }
