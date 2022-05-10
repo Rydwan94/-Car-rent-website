@@ -93,7 +93,7 @@ searchInput.addEventListener("change", () => {
 });
 
 function showTime() {
-  let monthsArr = [
+  const monthsArr = [
     "stycznia",
     "lutego",
     "marca",
@@ -108,7 +108,7 @@ function showTime() {
     "grudnia",
   ];
 
-  let daysArr = [
+  const daysArr = [
     "Niedziela",
     "Poniedziałek",
     "Wtorek",
@@ -118,15 +118,15 @@ function showTime() {
     "Sobota",
   ];
 
-  let dateObj = new Date();
+  const dateObj = new Date();
   dateObj.setDate(dateObj.getDate() + 14);
 
-  let year = dateObj.getFullYear();
-  let month = dateObj.getMonth();
-  let numDay = dateObj.getDate();
-  let day = dateObj.getDay();
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth();
+  const numDay = dateObj.getDate();
+  const day = dateObj.getDay();
 
-  let output =
+  const output =
     daysArr[day] +
     ", " +
     numDay +
