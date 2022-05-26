@@ -108,6 +108,9 @@ body {
 .hidden {
   display: none;
 }
+.show {
+  display: block;
+}
 
 .carsCardsContainer {
   display: flex;

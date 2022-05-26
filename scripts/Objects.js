@@ -46,24 +46,70 @@ const returnFromBuyButton = document.getElementById("returnFromBuyButton");
 const formLeasing = document.getElementById("formLeasing");
 const formCash = document.getElementById("formCash");
 
-
 nav.addEventListener("click", () => {
-    const links = document.getElementById("myLinks");
-    if (links.style.display === "block") {
-      links.style.display = "none";
-    } else {
-      links.style.display = "block";
+  const links = document.getElementById("myLinks");
+  if (links.style.display === "block") {
+    links.style.display = "none";
+  } else {
+    links.style.display = "block";
+  }
+});
+
+const cars = [
+  { car: carVolvo, 
+    brand: "Volvo XC90", 
+    price: 385900, 
+    picture: volvoImage },
+  {
+    car: carRenault,
+    brand: "Renault Kadjar",
+    price: 120000,
+    picture: renaultImage,
+  },
+  { car: carOpel,
+    brand: "Opel Astra", 
+    price: 140000, 
+    picture: opelImage },
+  { car: carAudi, 
+    brand: "Audi A1", 
+    price: 200000, 
+    picture: audiImage },
+];
+
+// switch () {
+//   case 0:
+//     Volvo = carVolvo;
+//     break;
+//   case 1:
+//     Renault = carRenault;
+//     break;
+//   case 2:
+//     Opel = carOpel;
+//     break;
+//   case 3:
+//     Audi = carAudi;
+//     break;
+// }
+
+const hideCars = () => {
+  cars[i].car.style.display = "none";
+};
+
+hide.addEventListener("click", () => {
+  searchElements.classList.toggle("hidden");
+  cars
+});
+
+searchInput.addEventListener("change", () => {
+  for (let i = 0; i < cars.length; i++) {
+    if (searchInput.value === "allCars") {
+      cars[i].car.style.display = "block";
+    } else if (searchInput.value === "Volvo") {
+      cars[0].car.style.display = "block";
+      hideCars();
+    } else if (searchInput.value === "Renault") {
+      cars[1].car.style.display = "block";
+      hideCars();
     }
-  });
-
-
-  const cars = [
-      {brand: "Volvo XC90", price: 385900, picture: volvoImage},
-      {brand: "Renault Kadjar", price: 120000, picture: renaultImage},
-      {brand: "Opel Astra", price: 140000, picture: opelImage},
-      {brand: "Audi A1", price: 200000, picture: audiImage}
-  ]
-
-  hide.addEventListener('click', () => {
-      
-  })
+  }
+});
