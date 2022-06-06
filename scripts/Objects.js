@@ -2,10 +2,6 @@ const nav = document.getElementById("nav");
 const container = document.getElementById("container");
 const searchElements = document.getElementById("searchElements");
 const searchInput = document.getElementById("carsInput");
-const carVolvo = document.getElementById("carVolvo");
-const carRenault = document.getElementById("carRenault");
-const carOpel = document.getElementById("carOpel");
-const carAudi = document.getElementById("carAudi");
 const formContainer = document.getElementById("formContainer");
 const costOfCar = document.getElementById("costOfCar");
 const tiresPlaceHolder = document.getElementById("tire");
@@ -55,51 +51,46 @@ nav.addEventListener("click", () => {
   }
 });
 
-const cars = [
-  { car: carVolvo, 
-    brand: "Volvo XC90", 
-    price: 385900, 
-    picture: volvoImage },
-  {
-    car: carRenault,
-    brand: "Renault Kadjar",
-    price: 120000,
-    picture: renaultImage,
-  },
-  { car: carOpel,
-    brand: "Opel Astra", 
-    price: 140000, 
-    picture: opelImage },
-  { car: carAudi, 
-    brand: "Audi A1", 
-    price: 200000, 
-    picture: audiImage },
-];
-
-
-
-
-const hideCars = () => {
-  cars[i].car.style.display = "none";
-};
-
 hide.addEventListener("click", () => {
   searchElements.classList.toggle("hidden");
-  cars
+  carVolvo.style.display = "none";
+  carRenault.style.display = "none";
+  carOpel.style.display = "none";
+  carAudi.style.display = "none";
 });
 
-searchInput.addEventListener("change", () => {
-  for (let i = 0; i < cars.length; i++) {
-    if (searchInput.value === "allCars") {
-      cars[i].car.style.display = "block";
-    } else if (searchInput.value === "Volvo") {
-      cars[0].car.style.display = "block";
-      hideCars();
-    } else if (searchInput.value === "Renault") {
-      cars[1].car.style.display = "block";
-      hideCars();
-    }
+class Cars {
+  constructor(car, price, value) {
+    this.car = document.getElementById(car);
+    this.price = price;
+    this.value = value;
   }
-});
+  showCar(value, car) {
+    searchInput.addEventListener("change", () => {
+      if (searchInput.value === value) {
+      car.style.display = "block"}
+      else(car.style.display = "none")
+    });
+  }
+}
+
+let Renault = new Cars("carRenault", 120000, "Renault");
+let Volvo = new Cars("carVolvo", 385900, "Volvo");
+let Opel = new Cars("carOpel", 140000, "Opel");
+let Audi = new Cars("carAudi", 200000, "Audi");
+let allCars = new Cars("carRenault","carVolvo", 0, "Wszystkie dostępne")
+
+Volvo.showCar(Volvo.value, Volvo.car);
+Renault.showCar(Renault.value, Renault.car);
+Opel.showCar(Opel.value, Opel.car);
+Audi.showCar(Audi.value, Audi.car);
+allCars.showCar(allCars.value, allCars.car)
+
+
+// searchInput.addEventListener("change", () => {
+//   if (searchInput.value === Renault.value) {
+//     Renault.car.style.display = "block";
+//   } else Renault.car.style.display = "none";
+// });
 
 
