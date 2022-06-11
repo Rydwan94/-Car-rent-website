@@ -4,9 +4,7 @@ const searchElements = document.getElementById("searchElements");
 const searchInput = document.getElementById("carsInput");
 const formContainer = document.getElementById("formContainer");
 const costOfCar = document.getElementById("costOfCar");
-const tiresPlaceHolder = document.getElementById("tire");
-const skinPlaceHolder = document.getElementById("skin");
-const sensorPlaceHolder = document.getElementById("sensor");
+
 const errorContainer = document.getElementById("errorContainer");
 const formName = document.getElementById("formName");
 const formLastName = document.getElementById("formLastName");
@@ -26,17 +24,8 @@ opelImage.src = "src/opel.webp";
 audiImage.src = "src/audi.webp";
 
 const hide = document.getElementById("hide");
-const formButtonVolvo = document.getElementById("formButtonVolvo");
-const formButtonRenault = document.getElementById("formButtonRenault");
-const formButtonOpel = document.getElementById("formButtonOpel");
-const formButtonAudi = document.getElementById("formButtonAudi");
-const formBackButton = document.getElementById("formBackButton");
-const tiresButton = document.getElementById("tiresButton");
-const seatsButton = document.getElementById("seatsButton");
-const sensorButton = document.getElementById("sensorButton");
-const removeTires = document.getElementById("removeTires");
-const removeSeats = document.getElementById("removeSeats");
-const removeSensors = document.getElementById("removeSensors");
+const carsClass = document.getElementsByClassName("carsCards")
+
 const formAcceptButton = document.getElementById("formAcceptButton");
 const returnFromBuyButton = document.getElementById("returnFromBuyButton");
 const formLeasing = document.getElementById("formLeasing");
@@ -60,37 +49,78 @@ hide.addEventListener("click", () => {
 });
 
 class Cars {
-  constructor(car, price, value) {
-    this.car = document.getElementById(car);
+  constructor(element, elements, price, value) {
+    this.element = document.getElementById(element);
+    this.elements = document.getElementsByClassName(elements);
     this.price = price;
     this.value = value;
   }
-  showCar(value, car) {
+  showCar(value, element) {
     searchInput.addEventListener("change", () => {
       if (searchInput.value === value) {
-      car.style.display = "block"}
-      else(car.style.display = "none")
+        element.style.display = "block";
+      } else element.style.display = "none";
+    });
+  }
+  showAllCars(value, elements) {
+    searchInput.addEventListener("change", () => {
+      if (searchInput.value === value) {
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].style.display = "block";
+        }
+      }
+    });
+  }
+  carButton(element, secondElement, price) {
+    element.addEventListener("click", () => {
+      formContainer.style.display = "block";
+      container.style.display = "none";
+      costOfCar.value = price;
+      formLeasing.checked = true;
+      secondElement.addEventListener("click", () => {
+        formContainer.style.display = "none";
+        container.style.display = "block";
+      });
+    });
+  }
+  addAccessories(element, secondElement, thirdElement, value, cost) {
+    element.addEventListener("click", () => {
+      if (thirdElement.innerHTML === "") {
+        costOfCar.value = Number(costOfCar.value) + cost;
+      }
+      thirdElement.innerHTML = value;
+      
+    });
+    secondElement.addEventListener("click", () => {
+      if (thirdElement.innerHTML.length >= 1) {
+        costOfCar.value = Number(costOfCar.value) - cost;
+      }
+      thirdElement.innerHTML = "";
     });
   }
 }
 
-let Renault = new Cars("carRenault", 120000, "Renault");
-let Volvo = new Cars("carVolvo", 385900, "Volvo");
-let Opel = new Cars("carOpel", 140000, "Opel");
-let Audi = new Cars("carAudi", 200000, "Audi");
-let allCars = new Cars("carRenault","carVolvo", 0, "Wszystkie dostępne")
+let Volvo = new Cars("carVolvo", "", 385900, "Volvo");
+let Renault = new Cars("carRenault", "", 120000, "Renault");
+let Opel = new Cars("carOpel", "", 140000, "Opel");
+let Audi = new Cars("carAudi", "", 200000, "Audi");
+let showAllCars = new Cars("", "carsCards", 0, "allCars");
 
-Volvo.showCar(Volvo.value, Volvo.car);
-Renault.showCar(Renault.value, Renault.car);
-Opel.showCar(Opel.value, Opel.car);
-Audi.showCar(Audi.value, Audi.car);
-allCars.showCar(allCars.value, allCars.car)
+Volvo.showCar(Volvo.value, Volvo.element);
+Renault.showCar(Renault.value, Renault.element);
+Opel.showCar(Opel.value, Opel.element);
+Audi.showCar(Audi.value, Audi.element);
+showAllCars.showAllCars(showAllCars.value, showAllCars.elements);
 
+Volvo.carButton(formButtonVolvo, formBackButton, Volvo.price);
+Renault.carButton(formButtonRenault, formBackButton, Renault.price);
+Opel.carButton(formButtonOpel, formBackButton, Opel.price);
+Audi.carButton(formButtonAudi, formBackButton, Audi.price);
 
-// searchInput.addEventListener("change", () => {
-//   if (searchInput.value === Renault.value) {
-//     Renault.car.style.display = "block";
-//   } else Renault.car.style.display = "none";
-// });
-
-
+Volvo.addAccessories(tiresButton, removeTires, tire, "<li>Opony na każdy sezon</li>", 5000)
+Volvo.addAccessories(seatsButton, removeSeats, skin, "<li>Skórzane fotele</li>", 10000)
+Volvo.addAccessories(sensorButton, removeSensors, sensor, "<li>Czujniki Parkowania</li>", 10000)
+Renault.addAccessories(tiresButton, removeTires, tire, "<li>Opony na każdy sezon</li>", 5000)
+Renault.addAccessories(seatsButton, removeSeats, skin, "<li>Skórzane fotele</li>", 10000)
+Renault.addAccessories(sensorButton, removeSensors, sensor, "<li>Czujniki Parkowania</li>", 10000)
+let x = document.getElementsByClassName("carsCards");
