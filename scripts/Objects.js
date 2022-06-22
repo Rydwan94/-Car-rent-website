@@ -23,6 +23,10 @@ renaultImage.src = "src/renault.jpg";
 opelImage.src = "src/opel.webp";
 audiImage.src = "src/audi.webp";
 
+const tirePlaceHolder = document.getElementById("tire")
+const skinPlaceHolder = document.getElementById("skin")
+const seatsPlaceHolder = document.getElementById("sensor")
+
 const hide = document.getElementById("hide");
 const carsClass = document.getElementsByClassName("carsCards")
 
@@ -40,6 +44,9 @@ nav.addEventListener("click", () => {
   }
 });
 
+
+
+
 hide.addEventListener("click", () => {
   searchElements.classList.toggle("hidden");
   carVolvo.style.display = "none";
@@ -49,11 +56,12 @@ hide.addEventListener("click", () => {
 });
 
 class Cars {
-  constructor(element, elements, price, value) {
+  constructor(element, elements, price, value, img) {
     this.element = document.getElementById(element);
     this.elements = document.getElementsByClassName(elements);
     this.price = price;
     this.value = value;
+    this.img = img
   }
   showCar(value, element) {
     searchInput.addEventListener("change", () => {
@@ -71,12 +79,17 @@ class Cars {
       }
     });
   }
-  carButton(element, secondElement, price) {
+  carButton(element, secondElement, price, img) {
     element.addEventListener("click", () => {
       formContainer.style.display = "block";
       container.style.display = "none";
       costOfCar.value = price;
       formLeasing.checked = true;
+      tirePlaceHolder.innerHTML = "";
+       skinPlaceHolder.innerHTML = "";
+       seatsPlaceHolder.innerHTML = "";
+       boughtCarImage.appendChild(img);
+       finalBought()
       secondElement.addEventListener("click", () => {
         formContainer.style.display = "none";
         container.style.display = "block";
@@ -100,10 +113,10 @@ class Cars {
   }
 }
 
-let Volvo = new Cars("carVolvo", "", 385900, "Volvo");
-let Renault = new Cars("carRenault", "", 120000, "Renault");
-let Opel = new Cars("carOpel", "", 140000, "Opel");
-let Audi = new Cars("carAudi", "", 200000, "Audi");
+let Volvo = new Cars("carVolvo", "", 385900, "Volvo", volvoImage);
+let Renault = new Cars("carRenault", "", 120000, "Renault", renaultImage);
+let Opel = new Cars("carOpel", "", 140000, "Opel", opelImage);
+let Audi = new Cars("carAudi", "", 200000, "Audi", audiImage);
 let showAllCars = new Cars("", "carsCards", 0, "allCars");
 
 Volvo.showCar(Volvo.value, Volvo.element);
@@ -123,4 +136,27 @@ Volvo.addAccessories(sensorButton, removeSensors, sensor, "<li>Czujniki Parkowan
 Renault.addAccessories(tiresButton, removeTires, tire, "<li>Opony na każdy sezon</li>", 5000)
 Renault.addAccessories(seatsButton, removeSeats, skin, "<li>Skórzane fotele</li>", 10000)
 Renault.addAccessories(sensorButton, removeSensors, sensor, "<li>Czujniki Parkowania</li>", 10000)
-let x = document.getElementsByClassName("carsCards");
+
+
+formAcceptButton.addEventListener("click", () => {
+  if (formName.value == "" || formLastName == "") {
+    errorContainer.innerText = "Podaj imię i nazwisko";
+  } else if (formName.value[0] !== formName.value[0].toUpperCase()) {
+    errorContainer.style.display = "block";
+    errorContainer.innerText =
+      "Imię i nazwisko powinny zaczynać się z dużej litery";
+  } else if (formLastName.value[0] !== formLastName.value[0].toUpperCase()) {
+    errorContainer.style.display = "block";
+    errorContainer.innerText =
+      "Imię i nazwisko powinny zaczynać się z dużej litery";
+  } else if (
+    formName.value[0] === formName.value[0].toUpperCase() &&
+    formLastName.value[0] === formLastName.value[0].toUpperCase()
+  ) {
+    errorContainer.style.display = "none";
+    foo.style.display = "none";
+    formContainer.classList.toggle("hidden");
+    boughtCar.style.display = "block";
+  }
+});
+
